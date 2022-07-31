@@ -31,7 +31,7 @@ class PhoneNumber extends StatefulWidget {
 class PhoneNumberState extends State<PhoneNumber> {
   static const String id = 'phone_number';
   final TextEditingController _controller = TextEditingController();
-  String isoCode;
+  String isoCode = '+91';
 int numberLimit = 10;
   var showDialogBox = false;
 
@@ -78,6 +78,12 @@ int numberLimit = 10;
       setState(() {
         showDialogBox = false;
       });
+    });
+
+    setState(() {
+      showDialogBox = false;
+      numberLimit = 10;
+      isoCode = '+91';
     });
   }
 
