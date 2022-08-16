@@ -53,7 +53,7 @@ class CardContentNew extends StatelessWidget {
     void hitNavigator(context, category_name, ui_type,
         vendor_category_id) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      if (ui_type == "grocery" || ui_type == "Grocery" || ui_type == "1") {
+      if (ui_type == "grocery" || ui_type == "Grocery" || ui_type == "Bakery"|| ui_type == "1") {
         prefs.setString("vendor_cat_id", '${vendor_category_id}');
         prefs.setString("ui_type", '${ui_type}');
         Navigator.push(
@@ -98,22 +98,6 @@ class CardContentNew extends StatelessWidget {
       }
     }
 
-    if (list.isEmpty) {
-      return
-            Container(
-                child: Container(
-                  child: Text("No DATA",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20
-                    ),
-
-            )
-            ));
-    }
-    else{
       return Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +105,9 @@ class CardContentNew extends StatelessWidget {
           children: <Widget>[
             Container(
                 child: Container(
-                  child: Text(text,
+                  margin: new EdgeInsets.symmetric(horizontal: 20.0,vertical: 20.0),
+                  child: Text(
+                    text,
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         color: Colors.black,
@@ -133,11 +119,10 @@ class CardContentNew extends StatelessWidget {
             ),
             ConstrainedBox(
                 constraints: new BoxConstraints(
-                  minWidth: 120,
-                  maxHeight: 100,
+                  minWidth: 170,
+                  maxHeight: 120,
                 ),
                 child: ListView.builder(
-                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: list.length,
                     itemBuilder: (BuildContext context, int index) =>
@@ -151,7 +136,7 @@ class CardContentNew extends StatelessWidget {
                                     .spaceEvenly,
                                 children: <Widget>[
                                   Container(
-                                    width: 150,
+                                    width: 170,
                                     height: 150,
                                     child: new GestureDetector(
                                         onTap: () {
@@ -208,8 +193,8 @@ class CardContentNew extends StatelessWidget {
                                           }
                                         },
                                         child: Container(
-                                            width: 50,
-                                            height: 50,
+                                            width: 160,
+                                            height: 120,
                                             child:
                                             Column(
                                                 mainAxisSize: MainAxisSize.min,
@@ -222,16 +207,17 @@ class CardContentNew extends StatelessWidget {
                                                     child: Container(
                                                       child: Image.network(
                                                         image,
-                                                        height: 50,
-                                                        width: 50,
+                                                        height: 100,
+                                                        width: 120,
+                                                        fit: BoxFit.fill,
                                                         alignment: Alignment
-                                                            .topRight,
+                                                            .center,
                                                       ),
 
                                                     ),
                                                   ),
                                                   Container(
-                                                      height: 100,
+                                                      height: 80,
                                                       width: 100,
                                                       child:
                                                       Text(
@@ -262,4 +248,3 @@ class CardContentNew extends StatelessWidget {
       );
     }
   }
-}

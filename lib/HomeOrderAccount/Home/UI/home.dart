@@ -228,7 +228,7 @@ class _HomeState extends State<Home> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      "Got Delivered",
+                      "Get Delivered",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     SizedBox(
@@ -335,7 +335,9 @@ class _HomeState extends State<Home> {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   children: (nearStores != null && nearStores.length > 0)
-                      ? nearStores.map((e) {
+                      ?
+                  nearStores.map((e) {
+                    print(e);
                           return ReusableCard(
                             cardChild: CardContent(
                               image: '${imageBaseUrl}${e.category_image}',
